@@ -22,10 +22,18 @@
  * SOFTWARE.
  */
 
-package com.kuaihuoyun.akaboot.akka;
+package com.kuaihuoyun.core.akka.bootstrap;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import com.kuaihuoyun.core.bean.Lifecycle;
 
-@ConfigurationProperties( prefix = "akka", ignoreUnknownFields = true)
-public class AkkaProperties {
+public class AbstractAkkaBootstrap implements Lifecycle {
+
+    public void init() {
+
+    }
+
+    public void destroy() {
+
+    }
+
 }

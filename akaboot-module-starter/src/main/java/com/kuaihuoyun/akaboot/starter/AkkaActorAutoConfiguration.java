@@ -27,6 +27,7 @@ package com.kuaihuoyun.akaboot.starter;
 
 
 import com.kuaihuoyun.akaboot.akka.AkkaProperties;
+import com.kuaihuoyun.akaboot.akka.config.ConfigClientActor;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,6 +41,8 @@ public class AkkaActorAutoConfiguration {
     //todo: 4. 本地context管理器
 
     @Bean
-    public
+    public ConfigClientActor initConfigClientActor(){
+
+    }
 
 }

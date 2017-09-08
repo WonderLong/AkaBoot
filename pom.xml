@@ -13,6 +13,7 @@
     <modules>
         <module>akaboot-module-starter</module>
         <module>akaboot-config</module>
+        <module>akaboot-core</module>
     </modules>
 
     <properties>

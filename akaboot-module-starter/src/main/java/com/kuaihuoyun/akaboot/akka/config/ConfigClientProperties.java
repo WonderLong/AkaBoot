@@ -22,10 +22,11 @@
  * SOFTWARE.
  */
 
-package com.kuaihuoyun.akaboot.akka;
+
+package com.kuaihuoyun.akaboot.akka.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties( prefix = "akka", ignoreUnknownFields = true)
-public class AkkaProperties {
+@ConfigurationProperties( prefix = "config", ignoreUnknownFields = true)
+public class ConfigClientProperties {
 }
