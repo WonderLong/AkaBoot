@@ -22,18 +22,12 @@
  * SOFTWARE.
  */
 
-package com.kuaihuoyun.core.akka.bootstrap;
+package com.kuaihuoyun.akaboot.core.bean;
 
-import com.kuaihuoyun.core.bean.Lifecycle;
+public interface Lifecycle {
 
-public class AbstractAkkaBootstrap implements Lifecycle {
+    void init();
 
-    public void init() {
-
-    }
-
-    public void destroy() {
-
-    }
+    void destroy();
 
 }

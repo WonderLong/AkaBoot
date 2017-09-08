@@ -22,12 +22,39 @@
  * SOFTWARE.
  */
 
-package com.kuaihuoyun.akaboot.akka.config;
+package com.kuaihuoyun.akaboot.config.client;
 
-import com.kuaihuoyun.core.akka.bootstrap.AbstractAkkaBootstrap;
+
+import com.kuaihuoyun.akaboot.config.bootstrap.AbstractAkkaBootstrap;
 
 public class ConfigClient extends AbstractAkkaBootstrap {
 
+    private ConfigClientProperties configClientProperties;
 
+    private ConfigClient(ConfigClientProperties configClientProperties){
+        this.configClientProperties = configClientProperties;
+    }
+
+
+    public static Builder builder(){
+        return new Builder();
+    }
+
+
+    public static class Builder{
+
+        private ConfigClientProperties configClientProperties;
+
+        public Builder configClientProperties(ConfigClientProperties configClientProperties){
+            this.configClientProperties = configClientProperties;
+            return this;
+        }
+
+        public ConfigClient build(){
+            ConfigClient client = new ConfigClient(this.configClientProperties);
+            return client;
+        }
+
+    }
 
 }

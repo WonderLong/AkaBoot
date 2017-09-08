@@ -22,11 +22,13 @@
  * SOFTWARE.
  */
 
+package com.kuaihuoyun.akaboot.config.client;
 
-package com.kuaihuoyun.akaboot.akka.config;
+import akka.actor.AbstractActor;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
+public class ConfigClientActor extends AbstractActor {
 
-@ConfigurationProperties( prefix = "config", ignoreUnknownFields = true)
-public class ConfigClientProperties {
+    public Receive createReceive() {
+        return null;
+    }
 }

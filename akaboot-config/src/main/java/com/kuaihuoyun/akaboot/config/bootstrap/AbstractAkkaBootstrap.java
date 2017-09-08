@@ -22,13 +22,23 @@
  * SOFTWARE.
  */
 
-package com.kuaihuoyun.akaboot.akka.config;
+package com.kuaihuoyun.akaboot.config.bootstrap;
 
-import akka.actor.AbstractActor;
+import com.kuaihuoyun.akaboot.core.bean.Lifecycle;
 
-public class ConfigClientActor extends AbstractActor {
+public abstract class AbstractAkkaBootstrap implements Lifecycle {
 
-    public Receive createReceive() {
-        return null;
+    public AbstractAkkaBootstrap(){
+        //todo 默认初始化
     }
+
+
+    public void init() {
+
+    }
+
+    public void destroy() {
+
+    }
+
 }

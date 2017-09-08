@@ -13,8 +13,17 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.kuaihuoyun.framework</groupId>
             <artifactId>akaboot-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.kuaihuoyun.framework</groupId>
+            <artifactId>akaboot-config</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

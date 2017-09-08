@@ -22,12 +22,12 @@
  * SOFTWARE.
  */
 
-package com.kuaihuoyun.core.bean;
 
-public interface Lifecycle {
+package com.kuaihuoyun.akaboot.config.client;
 
-    void init();
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
-    void destroy();
+@ConfigurationProperties( prefix = "config", ignoreUnknownFields = true)
+public class ConfigClientProperties {
 
 }

@@ -27,22 +27,33 @@ package com.kuaihuoyun.akaboot.starter;
 
 
 import com.kuaihuoyun.akaboot.akka.AkkaProperties;
-import com.kuaihuoyun.akaboot.akka.config.ConfigClientActor;
+import com.kuaihuoyun.akaboot.config.client.ConfigClient;
+import com.kuaihuoyun.akaboot.config.client.ConfigClientProperties;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableConfigurationProperties(AkkaProperties.class)
-public class AkkaActorAutoConfiguration {
+@EnableConfigurationProperties({AkkaProperties.class, ConfigClientProperties.class})
+public class AkkaModuleAutoConfiguration {
     //todo: 1. 获取配置属性对象
     //todo: 2. 创建配置中心代理Actor
     //todo: 3. 组装remote服务代理Actor
     //todo: 4. 本地context管理器
 
-    @Bean
-    public ConfigClientActor initConfigClientActor(){
+    /**
+     *
+     * @param configClientProperties
+     * @return
+     */
 
+    @Bean(destroyMethod = "destroy")
+    @ConditionalOnClass(ConfigClient.class)
+    @ConditionalOnMissingBean
+    public ConfigClient initConfigClientActor(ConfigClientProperties configClientProperties){
+        return ConfigClient.builder().configClientProperties(configClientProperties).build();
     }
 
 }
