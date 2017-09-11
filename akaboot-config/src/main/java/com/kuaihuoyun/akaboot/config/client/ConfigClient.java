@@ -25,15 +25,36 @@
 package com.kuaihuoyun.akaboot.config.client;
 
 
-import com.kuaihuoyun.akaboot.config.bootstrap.AbstractAkkaBootstrap;
+import com.kuaihuoyun.akaboot.bootstrap.AbstractAkkaBootstrap;
+
+import java.util.Properties;
 
 public class ConfigClient extends AbstractAkkaBootstrap {
 
+    /**
+     * private config properties object
+     */
     private ConfigClientProperties configClientProperties;
 
     private ConfigClient(ConfigClientProperties configClientProperties){
         this.configClientProperties = configClientProperties;
     }
+
+    @Override
+    protected Properties getAkkaProperties() {
+        return this.configClientProperties.getProperties();
+    }
+
+    @Override
+    protected String getPropertyValue(String name) {
+        return this.configClientProperties.getValue(name);
+    }
+
+    @Override
+    protected void doActorsCreation() {
+        //todo create Actors
+    }
+
 
 
     public static Builder builder(){
@@ -52,6 +73,7 @@ public class ConfigClient extends AbstractAkkaBootstrap {
 
         public ConfigClient build(){
             ConfigClient client = new ConfigClient(this.configClientProperties);
+            client.init();
             return client;
         }
 

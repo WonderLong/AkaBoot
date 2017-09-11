@@ -22,23 +22,42 @@
  * SOFTWARE.
  */
 
-package com.kuaihuoyun.akaboot.config.bootstrap;
+package com.kuaihuoyun.akaboot.bootstrap;
 
+import akka.actor.ActorSystem;
 import com.kuaihuoyun.akaboot.core.bean.Lifecycle;
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
+
+import java.util.Properties;
 
 public abstract class AbstractAkkaBootstrap implements Lifecycle {
+
+    public static final String AKKA_SYSTEM_NAME = "akka.system.name";
+
+    private ActorSystem actorSystem;
 
     public AbstractAkkaBootstrap(){
         //todo 默认初始化
     }
 
-
+    @Override
     public void init() {
-
+        Properties akkaSystemProperties = getAkkaProperties();
+        Config akkaConfig = ConfigFactory.parseProperties(akkaSystemProperties);
+        String clientName = getPropertyValue(AKKA_SYSTEM_NAME);
+        actorSystem = ActorSystem.create(clientName, ConfigFactory.load(akkaConfig));
+        doActorsCreation();
     }
 
+    protected abstract Properties getAkkaProperties();
+
+    protected abstract String getPropertyValue(String name);
+
+    protected abstract void doActorsCreation();
+
+    @Override
     public void destroy() {
-
+        actorSystem.terminate();
     }
-
 }

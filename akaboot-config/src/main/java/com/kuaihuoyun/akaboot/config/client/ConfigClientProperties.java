@@ -27,7 +27,20 @@ package com.kuaihuoyun.akaboot.config.client;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties( prefix = "config", ignoreUnknownFields = true)
+import java.util.Properties;
+
+@ConfigurationProperties( prefix = "akka.client", ignoreUnknownFields = true)
 public class ConfigClientProperties {
 
+    //todo 根据client配置信息，构造akka 客户端config对象
+
+    public Properties getProperties(){
+        //todo convert to Properties
+        return null;
+    }
+
+    public String getValue(String property){
+        //todo 获取properties中的一个元素
+        return null;
+    }
 }
