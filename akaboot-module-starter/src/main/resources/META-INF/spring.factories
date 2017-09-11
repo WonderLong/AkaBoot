@@ -1,2 +1,2 @@
 # Auto Configure
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.kuaihuoyun.akaboot.starter.AkkaModuleAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.kuaihuoyun.akaboot.spring.starter.AkkaModuleAutoConfiguration
