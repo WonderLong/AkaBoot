@@ -31,6 +31,13 @@ import com.typesafe.config.ConfigFactory;
 
 import java.util.Properties;
 
+/**
+ * Bootstrap抽象了初始化一个AkkaSystem最基本的处理方法；
+ * 提供了显示的生命周期管理入口。
+ *
+ * 无论是服务提供者还是使用者都应该以这个类为模板（基类）
+ */
+
 public abstract class AbstractAkkaBootstrap implements Lifecycle {
 
     public static final String AKKA_SYSTEM_NAME = "akka.system.name";

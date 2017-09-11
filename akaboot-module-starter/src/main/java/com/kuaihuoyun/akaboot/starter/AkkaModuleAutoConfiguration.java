@@ -35,6 +35,15 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 这个configuration入口，是从业务模块范围为界限。
+ * 首先是业务模块服务的系统入口；
+ * 其次它需要依赖配置中心，和远程服务；
+ * 无论是配置中心，还是远程服务调用都是基于Akka实现。
+ *
+ * @see com.kuaihuoyun.akaboot.config.client.ConfigClientProperties
+ * @see com.kuaihuoyun.akaboot.config.client.ConfigClient
+ */
 @Configuration
 @EnableConfigurationProperties({AkkaProperties.class, ConfigClientProperties.class})
 public class AkkaModuleAutoConfiguration {
