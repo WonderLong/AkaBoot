@@ -56,7 +56,6 @@ public class ConfigServer extends AbstractAkkaBootstrap {
     }
 
 
-
     public static Builder builder(){
         return new Builder();
     }

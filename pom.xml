@@ -14,6 +14,7 @@
         <module>akaboot-module-starter</module>
         <module>akaboot-config</module>
         <module>akaboot-core</module>
+        <module>akaboot-remote</module>
     </modules>
 
     <properties>
