@@ -30,6 +30,6 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 public class AkkaPropertySourcePlaceholderConfigurer extends PropertySourcesPlaceholderConfigurer {
 
     //todo create akka config client
-    //todo
+    
 
 }

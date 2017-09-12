@@ -23,14 +23,14 @@
  */
 
 
-package com.kuaihuoyun.akaboot.config.client;
+package com.kuaihuoyun.akaboot.config.server;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.Properties;
 
-@ConfigurationProperties( prefix = "config.akka.client", ignoreUnknownFields = true)
-public class ConfigClientProperties {
+@ConfigurationProperties( prefix = "config.akka.server", ignoreUnknownFields = true)
+public class ConfigServerProperties {
 
     //todo 根据client配置信息，构造akka 客户端config对象
 
