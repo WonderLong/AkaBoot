@@ -22,18 +22,31 @@
  * SOFTWARE.
  */
 
-package com.kuaihuoyun.akaboot.config.client;
+package com.kuaihuoyun.akaboot.config.server;
 
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
+import akka.event.Logging;
+import akka.event.LoggingAdapter;
 import com.kuaihuoyun.akaboot.config.message.ConfigElementChange;
 
-public class ConfigClientActor extends AbstractActor {
+public class ConfigServerManagerActor extends AbstractActor implements ConfigChangeNotify{
+
+    protected final LoggingAdapter log = Logging.getLogger(context().system(), this);
 
     public Receive createReceive() {
-        return receiveBuilder()
-                .match(ConfigElementChange.class, change -> {
-                    //todo update spring context properties, and try to refresh the context or just recreate the relative object
-                })
+        return receiveBuilder().matchAny(o -> log.info("received unknown message"))
                 .build();
+    }
+
+
+    @Override
+    public void notifyAllChildren(ConfigElementChange change) {
+
+        for(ActorRef actor : getContext().getChildren()){
+            //todo tell all children on specific property change
+            //todo 不同child app对应的appid，env，version是不一样的，最好能更加精准推送
+            actor.tell(change, self());
+        }
     }
 }

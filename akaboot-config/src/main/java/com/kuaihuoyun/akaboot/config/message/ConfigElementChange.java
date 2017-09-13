@@ -22,18 +22,22 @@
  * SOFTWARE.
  */
 
-package com.kuaihuoyun.akaboot.config.client;
+package com.kuaihuoyun.akaboot.config.message;
 
-import akka.actor.AbstractActor;
-import com.kuaihuoyun.akaboot.config.message.ConfigElementChange;
+import lombok.Data;
 
-public class ConfigClientActor extends AbstractActor {
+import java.io.Serializable;
+import java.util.Map;
 
-    public Receive createReceive() {
-        return receiveBuilder()
-                .match(ConfigElementChange.class, change -> {
-                    //todo update spring context properties, and try to refresh the context or just recreate the relative object
-                })
-                .build();
-    }
+@Data
+public class ConfigElementChange implements Serializable {
+
+    private Map<String, Object> changedProperties;
+
+    private String appId;
+
+    private String env;
+
+    private String version;
+
 }

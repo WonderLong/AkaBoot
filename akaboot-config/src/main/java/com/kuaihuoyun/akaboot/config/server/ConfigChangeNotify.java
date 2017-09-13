@@ -24,11 +24,10 @@
 
 package com.kuaihuoyun.akaboot.config.server;
 
-import akka.actor.AbstractActor;
+import com.kuaihuoyun.akaboot.config.message.ConfigElementChange;
 
-public class ConfigServerActor extends AbstractActor {
+public interface ConfigChangeNotify {
 
-    public Receive createReceive() {
-        return null;
-    }
+    void notifyAllChildren(ConfigElementChange change);
+
 }
