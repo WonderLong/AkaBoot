@@ -26,8 +26,11 @@ package com.kuaihuoyun.akaboot.config.client;
 
 import akka.actor.AbstractActor;
 import com.kuaihuoyun.akaboot.config.message.ConfigElementChange;
+import org.springframework.context.ApplicationContext;
 
 public class ConfigClientActor extends AbstractActor {
+
+    private ApplicationContext springContext;
 
     public Receive createReceive() {
         return receiveBuilder()
