@@ -43,9 +43,6 @@ public class RemoteServiceRegistry implements BeanDefinitionRegistryPostProcesso
     private RemoteServiceClient remoteServiceClient;
 
 
-
-
-
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
 
