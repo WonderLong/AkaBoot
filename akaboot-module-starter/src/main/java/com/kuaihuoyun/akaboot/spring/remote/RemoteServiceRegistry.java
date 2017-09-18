@@ -22,19 +22,42 @@
  * SOFTWARE.
  */
 
-package com.kuaihuoyun.akaboot.akka.discovery;
+package com.kuaihuoyun.akaboot.spring.remote;
+
+import com.kuaihuoyun.akaboot.remote.client.RemoteServiceClient;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
+
+public class RemoteServiceRegistry implements BeanDefinitionRegistryPostProcessor {
+
+    /**
+     * 要扫描的包路径
+     */
+    private String[] basePackages;
+
+    /**
+     * 远程客户端
+     */
+    private RemoteServiceClient remoteServiceClient;
 
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
 
-/**
- * 标示服务提供方对外开放的接口或方法
- */
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD})
-public @interface AkkaExportService {
+
+    @Override
+    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
+
+        //todo 扫描所有标注 @AkkaExportService 的field／constructor param
+        //todo 根据依赖的类来生成远程代理类factorybean
+
+
+
+    }
+
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+
+    }
 }
