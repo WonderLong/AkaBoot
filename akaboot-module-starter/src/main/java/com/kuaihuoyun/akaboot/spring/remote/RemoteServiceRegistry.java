@@ -24,13 +24,21 @@
 
 package com.kuaihuoyun.akaboot.spring.remote;
 
-import com.kuaihuoyun.akaboot.remote.client.RemoteServiceClient;
+import lombok.Setter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 
+import java.io.IOException;
+
+
+@Setter
 public class RemoteServiceRegistry implements BeanDefinitionRegistryPostProcessor {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(RemoteServiceRegistry.class);
 
     /**
      * 要扫描的包路径
@@ -40,16 +48,21 @@ public class RemoteServiceRegistry implements BeanDefinitionRegistryPostProcesso
     /**
      * 远程客户端
      */
-    private RemoteServiceClient remoteServiceClient;
+    private String remoteServiceClientReference;
 
 
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
-
-        //todo 扫描所有标注 @AkkaExportService 的field／constructor param
-        //todo 根据依赖的类来生成远程代理类factorybean
-
-
+        RemoteServiceRegistryCollector registryCollector = new RemoteServiceRegistryCollector(registry, remoteServiceClientReference);
+        for(String packageName : basePackages){
+            try {
+                RemoteServiceReferencesScaner.doScan(packageName, registryCollector);
+            } catch (IOException e) {
+                LOGGER.error("Scan [{}] got io error", e);
+            } catch (ClassNotFoundException e) {
+                LOGGER.error("Scan [{}] got error", e);
+            }
+        }
 
     }
 

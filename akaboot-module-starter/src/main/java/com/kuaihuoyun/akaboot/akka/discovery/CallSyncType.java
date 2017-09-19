@@ -24,7 +24,7 @@
 
 package com.kuaihuoyun.akaboot.akka.discovery;
 
-public enum CallType {
+public enum CallSyncType {
 
     ASYNC,
     SYNC

@@ -37,6 +37,16 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface AkkaRemoteService {
 
+    /**
+     * 二进制包路径的类名
+     * @return
+     */
+    String className() default "";
 
+    /**
+     * 整类中方法的调用方式
+     * @return
+     */
+    CallSyncType syncType() default CallSyncType.SYNC;
 
 }
