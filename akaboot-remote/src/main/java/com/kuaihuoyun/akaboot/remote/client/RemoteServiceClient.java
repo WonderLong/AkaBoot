@@ -5,6 +5,8 @@ package com.kuaihuoyun.akaboot.remote.client;
  */
 public interface RemoteServiceClient {
 
+    void init();
 
+    void destroy();
 
 }

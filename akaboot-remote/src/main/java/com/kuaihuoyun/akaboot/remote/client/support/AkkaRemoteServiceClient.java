@@ -26,9 +26,20 @@ package com.kuaihuoyun.akaboot.remote.client.support;
 
 import com.kuaihuoyun.akaboot.remote.client.RemoteServiceClient;
 
+/**
+ * 通过akka cluster实现远程服务调用
+ */
+public class AkkaRemoteServiceClient implements RemoteServiceClient {
 
-public class AkkaRemoteServiceClient implements RemoteServiceClient{
 
 
+    @Override
+    public void init() {
 
+    }
+
+    @Override
+    public void destroy() {
+
+    }
 }
