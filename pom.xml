@@ -15,6 +15,7 @@
         <module>akaboot-config</module>
         <module>akaboot-core</module>
         <module>akaboot-remote</module>
+        <module>akaboot-metrics</module>
     </modules>
 
     <properties>
